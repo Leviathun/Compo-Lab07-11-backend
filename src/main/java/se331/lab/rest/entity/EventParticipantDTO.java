@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class EventParticipantDTO {
     Long id;
     String name;
+    String telNo;
 }
