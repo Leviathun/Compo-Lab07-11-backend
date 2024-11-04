@@ -1,4 +1,4 @@
-package se331.lab.security.token;
+package se331.lab.rest.security.token;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

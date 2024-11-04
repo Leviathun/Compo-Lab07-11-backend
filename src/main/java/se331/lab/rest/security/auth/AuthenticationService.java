@@ -1,4 +1,4 @@
-package se331.lab.security.auth;
+package se331.lab.rest.security.auth;
 
 
 
@@ -11,13 +11,13 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import se331.lab.security.config.JwtService;
-import se331.lab.security.token.Token;
-import se331.lab.security.token.TokenRepository;
-import se331.lab.security.token.TokenType;
-import se331.lab.security.user.Role;
-import se331.lab.security.user.User;
-import se331.lab.security.user.UserRepository;
+import se331.lab.rest.security.config.JwtService;
+import se331.lab.rest.security.token.Token;
+import se331.lab.rest.security.token.TokenRepository;
+import se331.lab.rest.security.token.TokenType;
+import se331.lab.rest.security.user.Role;
+import se331.lab.rest.security.user.User;
+import se331.lab.rest.security.user.UserRepository;
 
 import java.io.IOException;
 import java.util.List;

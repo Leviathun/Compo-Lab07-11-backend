@@ -1,4 +1,4 @@
-package se331.lab.security.config;
+package se331.lab.rest.security.config;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import se331.lab.security.token.TokenRepository;
+import se331.lab.rest.security.token.TokenRepository;
 
 import java.io.IOException;
 

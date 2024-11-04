@@ -1,4 +1,4 @@
-package se331.lab.security.user;
+package se331.lab.rest.security.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

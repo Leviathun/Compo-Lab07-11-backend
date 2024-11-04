@@ -1,4 +1,4 @@
-package se331.lab.security.auth;
+package se331.lab.rest.security.auth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

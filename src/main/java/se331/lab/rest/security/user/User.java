@@ -1,4 +1,4 @@
-package se331.lab.security.user;
+package se331.lab.rest.security.user;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import se331.lab.security.token.Token;
+import se331.lab.rest.security.token.Token;
 
 import java.util.ArrayList;
 import java.util.Collection;

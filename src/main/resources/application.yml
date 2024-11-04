@@ -1,9 +1,9 @@
 spring:
+  application:
+    name: 331-backend
   profiles:
     active:
       - manual
-  application:
-    name: 331-backend
   datasource:
     url: jdbc:mysql://localhost:3307/selabdbOrganizer?createDatabaseIfNotExist=true&autoReconnect=true&characterEncoding=UTF-8&allowMultiQueries=true&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -18,5 +18,12 @@ spring:
     servlet:
       multipart:
         max-file-size: 10MB
+application:
+  security:
+    jwt:
+      secret-key: efdc78c6174e226a41b0e5e60efbec6a523a5667352d437dcabd8d016f6c9404daa8746633c875332f95c34b236e3220e6ecac97539cb157a5cf04f9e1da1e0f671381eab418c8da916da261f02065b6db847a2fbdc3ea2d12cf0544aa2061cdec8885019bed4b3a33a850543c7758d45f03ad8b7a7f0f43ef2ef0d9b5267448e0af35d2b5b8593690c4a8af69ae1cb2b734970fa6f57bc6622bac4ab06246eede142a67256268474d060bd68e5b897e78c213a764bab78aef6434bc1cfee48e63905ae69c6eb7abe44c054f6b0ab08621d57d3b4f79fc100989deee500a8b6d7e613824aaf7ec7f8aff5fccf3b875f79a07847c1e75ece5a6ea768bef7c26e2e2897e77303c990acd18089561b1d1c1aa52ec6640f8ea1127418fe4fc89db055d862e1c8ccf8c62411bb449482888e8368858f9edd318abdbc588c25cc9ef6efaf6fd62317e0cdf8008310bc2f0a5d9e542500662c5a4770622dcef048b32a18cc45886ed6fc5bd550238a71917d928af20047e3d2583a7e39e91e01ed1e37ba9aafd99e78267f2ac50776bd9d7e5d330851ac8f71a3a53dca8054ae84081458602cd2c5e0d1f2d176f2958a566a6b87d9e67b3737a8205b8d274963a02d0c10d8b28bb2d8fdbfb722f1817333da19919c437ccac562d8006929ea8be1f102e07399737da440ab0e30842a22af59fd00ccaea9e0f25e15bf36446da09b87f3c
+      expiration: 86400000 # 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days
 
 
