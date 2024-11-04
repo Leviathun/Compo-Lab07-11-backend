@@ -4,9 +4,14 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import se331.lab.rest.entity.*;
 import se331.lab.rest.repository.*;
+import se331.lab.rest.security.user.Role;
+import se331.lab.rest.security.user.User;
+import se331.lab.rest.security.user.UserRepository;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -19,6 +24,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     final ParticipantRepository participantRepository;
     final AuctionRepository auctionRepository;
     final BidRepository bidRepository;
+    final UserRepository userRepository;
 
     @Override
     @Transactional
@@ -86,9 +92,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         tempEvent = eventRepository.save(Event.builder()
                 .category("Academic")
                 .title("Commencement Day")
-                .description ("A time for celebration")
-                .location ("CMU Convention hall")
-                .date ("21th Jan")
+                .description("A time for celebration")
+                .location("CMU Convention hall")
+                .date("21th Jan")
                 .time("8.00am-4.00 pm.")
                 .petAllowed(false)
                 .build());
@@ -103,7 +109,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         org1.getOwnEvents().add(tempEvent);
 
         tempEvent = eventRepository.save(Event.builder()
-                .category ("Cultural")
+                .category("Cultural")
                 .title("Loy Krathong")
                 .description("A time for Krathong")
                 .location("Ping River")
@@ -139,6 +145,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         // Assign organizer
         tempEvent.setOrganizer(org3);
         org3.getOwnEvents().add(tempEvent);
+        addUser();
 
         // AUCTIONS
         Auction tempAuction;
@@ -322,6 +329,46 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .organizationName("Chiang Mai Municipality")
                 .address("Chiang Mai Moat")
                 .build());*/
+    }
+    // USER
+    User user1, user2, user3;
+    private void addUser() {
+        PasswordEncoder encoder = new BCryptPasswordEncoder() ;
+        user1 = User.builder()
+                .username("admin")
+                .password(encoder.encode("admin"))
+                .firstname("admin")
+                .lastname("admin")
+                .email("admin@admin.com")
+                .enabled(true)
+                .build();
+
+        user2 = User.builder()
+                .username("user")
+                .password(encoder.encode("user"))
+                .firstname("user")
+                .lastname("user")
+                .email("enabled@user.com")
+                .enabled(true)
+                .build();
+
+        user3 = User.builder()
+                .username("disableUser")
+                .password(encoder.encode("disableUser"))
+                .firstname("disableUser")
+                .lastname("disableUser")
+                .email("disableUser@user.com")
+                .enabled(false)
+                .build() ;
+
+        user1.getRoles().add(Role.ROLE_USER) ;
+        user1.getRoles().add(Role.ROLE_ADMIN) ;
+
+        user2.getRoles().add(Role.ROLE_USER) ;
+        user3.getRoles().add(Role.ROLE_USER) ;
+        userRepository.save(user1) ;
+        userRepository.save(user2) ;
+        userRepository.save(user3) ;
     }
 }
 
