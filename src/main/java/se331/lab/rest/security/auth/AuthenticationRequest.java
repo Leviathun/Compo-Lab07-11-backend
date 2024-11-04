@@ -1,4 +1,4 @@
-package se331.lab.rest.entity;
+package se331.lab.security.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,11 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @Builder
+@AllArgsConstructor
 @NoArgsConstructor
-public class OrganizerPartipantDTO {
-    Long id;
-    String name;
-    String telNo;
+public class AuthenticationRequest {
+
+  private String username;
+  String password;
 }

@@ -9,6 +9,7 @@ import se331.lab.rest.dao.OrganizerDao;
 import se331.lab.rest.entity.Organizer;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -19,8 +20,17 @@ public class OrganizerServiceImpl implements OrganizerService {
         return organizerDao.getOrganizer(Pageable.unpaged()).getContent() ;
     }
 
-        @Override
-        public Page<Organizer> getOrganizer(Integer page, Integer pageSize) {
-            return organizerDao.getOrganizer(PageRequest.of(page, pageSize));
+    @Override
+    public Page<Organizer> getOrganizer(Integer page, Integer pageSize) {
+        return organizerDao.getOrganizer(PageRequest.of(page, pageSize));
+    }
+
+    @Override
+    public Organizer save(Organizer organizer) {
+        return organizerDao.save(organizer);
+    }
+    @Override
+    public Optional<Organizer> findById(Long id) {
+        return organizerDao.findById(id);
     }
 }
